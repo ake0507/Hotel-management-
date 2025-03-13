@@ -1,4 +1,5 @@
 Hotel Management System
+
 This C++ console application simulates a simple Hotel Management System, allowing users to manage room reservations and food orders. The system provides functionalities to make reservations, order food, modify services, void orders, view service history, and save records to files.
 
 Features
