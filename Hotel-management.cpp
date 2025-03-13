@@ -62,3 +62,27 @@ void orderFood(FoodOrder *&head)
     cout << setw(60) << "*" << endl
          << setfill(' ');
 }
+// Function to display service history
+void displayServiceHistory(RoomReservation *roomReservations, FoodOrder *foodOrders)
+{
+    // Display room reservation history
+    cout << setfill('*') << setw(60) << "*" << endl;
+
+    cout << "\nRoom Reservation History:\n";
+    while (roomReservations != nullptr)
+    {
+        cout << "Room Type: " << roomReservations->roomType << ", Check-in: " << roomReservations->checkInTime
+             << ", Check-out: " << roomReservations->checkOutTime << ", Name: " << roomReservations->name << "\n";
+        roomReservations = roomReservations->next;
+    }
+
+    // Display food order history
+    cout << "\nFood Order History:\n";
+    while (foodOrders != nullptr)
+    {
+        cout << "Food Item: " << foodOrders->foodItem << ", Payment Details: " << foodOrders->paymentDetails << "\n";
+        foodOrders = foodOrders->next;
+    }
+    cout << setw(60) << "*" << endl
+         << setfill(' ');
+}
