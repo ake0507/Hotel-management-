@@ -304,3 +304,68 @@ int main()
         // This block tries to find any exception or undisier behavior.
         try
         {
+            switch (choice)
+            {
+            case 1:
+                cout << "Choosed Food\n";
+                if (isroomreserved)
+                    orderFood(foodOrders);
+                else
+                    throw isroomreserved; // If room is not reserved, then it says it has boolean type exception.
+                break;
+            case 2:
+                cout << "Choosed Room\n";
+                makeRoomReservation(roomReservations);
+                isroomreserved = true;
+                break;
+            case 3:
+                cout << "Change service\n";
+                changeServices(roomReservations, foodOrders);
+                break;
+            case 4:
+                cout << "Void Order\n";
+                voidOrder(roomReservations, foodOrders);
+                break;
+            case 5:
+                cout << "Save Service\n";
+                saveToFile(roomReservations, foodOrders);
+                break;
+            case 6:
+                cout << "View History\n";
+                displayServiceHistory(roomReservations, foodOrders);
+                break;
+            case 0:
+                return 0;
+            default:
+                cout << "Invaild input\n";
+            }
+        }
+        // Catch any boolean type exception.
+        catch (bool)
+        {
+            // Message to Print.
+            cout << setfill('*') << setw(60) << "*" << endl;
+            cout << " Please make Room Reservation first!!!!\n";
+            cout << setw(60) << "*" << endl
+                 << setfill(' ');
+        }
+
+    } while (choice);
+
+    // Clean up allocated memory
+    while (roomReservations != nullptr)
+    {
+        RoomReservation *temp = roomReservations;
+        roomReservations = roomReservations->next;
+        delete temp;
+    }
+
+    while (foodOrders != nullptr)
+    {
+        FoodOrder *temp = foodOrders;
+        foodOrders = foodOrders->next;
+        delete temp;
+    }
+
+    return 0;
+}
