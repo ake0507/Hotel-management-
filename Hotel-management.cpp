@@ -193,3 +193,114 @@ void changeServices(RoomReservation *&roomReservations, FoodOrder *&foodOrders)
         }
     } while (choice);
 }
+void voidOrder(RoomReservation *&roomReservations, FoodOrder *&foodOrders)
+{
+    int choice;
+    do
+    {
+        cout << setw(40) << "Choose the order you want to void \n\n"
+             << setw(35) << "1. Void room Order\n"
+             << setw(35) << "2. Void food Order\n"
+             << setw(29) << "0. Back\n"
+             << "Input your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            cout << "choosed room\n";
+            // Example: Void a room order
+            if (roomReservations != nullptr)
+            {
+                RoomReservation *temp = roomReservations;
+                roomReservations = roomReservations->next;
+                delete temp;
+            }
+            cout << setfill('*') << setw(60) << "*" << endl;
+            cout << " Room invoice Succesfully voided!!!!\n";
+            cout << setw(60) << "*" << endl
+                 << setfill(' ');
+            break;
+        case 2:
+            cout << "choosed food\n";
+            // Example: Void a food order
+            if (foodOrders != nullptr)
+            {
+                FoodOrder *temp = foodOrders;
+                foodOrders = foodOrders->next;
+                delete temp;
+            }
+            cout << setfill('*') << setw(60) << "*" << endl;
+            cout << " Food invoice Succesfully voided!!!!\n";
+            cout << setw(60) << "*" << endl
+                 << setfill(' ');
+            break;
+        case 0:
+            cout << setfill('*') << setw(60) << "*" << endl;
+            cout << " Succesfully Voided !!!!\n";
+            cout << setw(60) << "*" << endl
+                 << setfill(' ');
+            return;
+        default:
+            cout << "Invaild input\n";
+        }
+    } while (choice);
+}
+void saveToFile(RoomReservation *&roomReservations, FoodOrder *&foodOrders)
+{
+    // Open File
+    ofstream outdata;
+
+    outdata.open("Room_store.csv", ios::app);
+    while (roomReservations != nullptr)
+    {
+        outdata << roomReservations->roomType << ','
+                << roomReservations->checkInTime << ','
+                << roomReservations->checkOutTime << ','
+                << roomReservations->name << ','
+                << roomReservations->contactInfo << ','
+                << roomReservations->paymentDetails << endl;
+
+        roomReservations = roomReservations->next;
+    }
+
+    outdata.close();
+
+    outdata.open("Food_store.csv", ios::app);
+    while (foodOrders != nullptr)
+    {
+        outdata << foodOrders->foodItem << ','
+                << foodOrders->paymentDetails << endl;
+
+        foodOrders = foodOrders->next;
+    }
+
+    outdata.close();
+    cout << setfill('*') << setw(60) << "*" << endl;
+    cout << " Succesfully Saved service History on the same directory at './Food_store.csv' and './Room_store.csv'!!!!\n";
+    cout << setw(60) << "*" << endl
+         << setfill(' ');
+}
+// Main function
+int main()
+{
+    RoomReservation *roomReservations = nullptr;
+    FoodOrder *foodOrders = nullptr;
+    bool isroomreserved = false;
+    int choice;
+    do
+    {
+        cout << setw(40) << "Welcom Arif Hotel\n\n"
+             << setw(35) << "1. Order Food\n"
+             << setw(35) << "2. Order Room\n"
+             << setw(39) << "3. Change Service\n"
+             << setw(35) << "4. Void Order\n"
+             << setw(37) << "5. Save Service\n"
+             << setw(45) << "6. View Service History\n"
+             << setw(29) << "0. Exit\n"
+             << "Input your choice: ";
+        cin >> choice;
+
+        // This block tries to find any exception or undisier behavior.
+        try
+        {
