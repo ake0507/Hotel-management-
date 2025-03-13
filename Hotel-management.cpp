@@ -86,3 +86,56 @@ void displayServiceHistory(RoomReservation *roomReservations, FoodOrder *foodOrd
     cout << setw(60) << "*" << endl
          << setfill(' ');
 }
+
+// Function to change services
+void changeServices(RoomReservation *&roomReservations, FoodOrder *&foodOrders)
+{
+
+    int choice;
+    int inRoom;
+    do
+    {
+        cout << setw(40) << "Choose the order you want to Change \n\n"
+             << setw(35) << "1. Change room Order\n"
+             << setw(35) << "2. Change food Order\n"
+             << setw(29) << "0. Back\n"
+             << "Input your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            cout << setw(40) << "Choose the order you want to Change in Room \n\n"
+                 << setw(35) << "1. Change Room type\n"
+                 << setw(35) << "2. Change Check out\n"
+                 << setw(30) << "3. Change Name\n"
+                 << setw(45) << "4. Change Contact Information\n"
+                 << setw(29) << "0. Back\n"
+                 << "Input your choice: ";
+            cin >> inRoom;
+            switch (inRoom)
+            {
+            case 1:
+                // Example: Change room type
+                if (roomReservations != nullptr)
+                {
+                    cout << "Change Room Type: ";
+                    cin >> roomReservations->roomType;
+                    cout << setfill('*') << setw(60) << "*" << endl;
+                    cout << " Succesfully changed Room Type!!!!\n";
+                    cout << setw(60) << "*" << endl
+                         << setfill(' ');
+                }
+                break;
+
+            case 2:
+                // Example: Change Check out Time
+                if (roomReservations != nullptr)
+                {
+                    cout << "Change Check out time: ";
+                    cin >> roomReservations->checkOutTime;
+                    cout << setfill('*') << setw(60) << "*" << endl;
+                    cout << " Succesfully Changed Check out time!!!!\n";
+                    cout << setw(60) << "*" << endl
+                         << setfill(' ');
+                }
