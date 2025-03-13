@@ -47,3 +47,18 @@ void makeRoomReservation(RoomReservation *&head)
     cout << setw(60) << "*" << endl
          << setfill(' ');
 }
+// Function to order food
+void orderFood(FoodOrder *&head)
+{
+    FoodOrder *newOrder = new FoodOrder;
+    cout << "Enter Food: ";
+    cin >> newOrder->foodItem;
+    cout << "Enter Payment Details: ";
+    cin >> newOrder->paymentDetails;
+    newOrder->next = head;
+    head = newOrder;
+    cout << setfill('*') << setw(60) << "*" << endl;
+    cout << " Succesfully Orderd Food !!!!\n";
+    cout << setw(60) << "*" << endl
+         << setfill(' ');
+}
