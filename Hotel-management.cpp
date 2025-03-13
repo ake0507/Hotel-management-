@@ -139,3 +139,57 @@ void changeServices(RoomReservation *&roomReservations, FoodOrder *&foodOrders)
                     cout << setw(60) << "*" << endl
                          << setfill(' ');
                 }
+                break;
+
+            case 3:
+                // Example: Change Name
+                if (roomReservations != nullptr)
+                {
+                    cout << "Change Name: ";
+                    cin >> roomReservations->name;
+                    cout << setfill('*') << setw(60) << "*" << endl;
+                    cout << " Succesfully Changed Name!!!!\n";
+                    cout << setw(60) << "*" << endl
+                         << setfill(' ');
+                }
+
+                break;
+
+            case 4:
+                // Example: Change Contact Information
+                if (roomReservations != nullptr)
+                {
+                    cout << "Change Contact Information: ";
+                    cin >> roomReservations->contactInfo;
+                    cout << setfill('*') << setw(60) << "*" << endl;
+                    cout << " Succesfully Changed Contact Information!!!!\n";
+                    cout << setw(60) << "*" << endl
+                         << setfill(' ');
+                }
+                break;
+            case 0:
+                break;
+            default:
+                cout << "Invaild input\n";
+            }
+
+            break;
+        case 2:
+            cout << "choosed food\n";
+            if (foodOrders != nullptr)
+            {
+                cout << "Change the food: ";
+                cin >> foodOrders->foodItem;
+                cout << setfill('*') << setw(60) << "*" << endl;
+                cout << " Succesfully Changed Food order!!!!\n";
+                cout << setw(60) << "*" << endl
+                     << setfill(' ');
+            }
+            break;
+        case 0:
+            return;
+        default:
+            cout << "Invaild input\n";
+        }
+    } while (choice);
+}
